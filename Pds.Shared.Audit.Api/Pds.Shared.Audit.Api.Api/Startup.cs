@@ -16,8 +16,9 @@ namespace Pds.Shared.Audit.Api.Api
     /// </summary>
     public class Startup
     {
+        private const string RequireElevatedRightsPolicyName = "RequireElevatedRights";
         private const string CurrentApiVersion = "v1.0.0";
-
+        private const string Roles = "AuditApiRole";
         private static string _assemblyName;
 
         /// <summary>
@@ -54,13 +55,21 @@ namespace Pds.Shared.Audit.Api.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiControllers();
-            services.AddFeatureServices();
+            services.AddFeatureServices(Configuration);
             services.AddPdsApplicationInsightsTelemetry(options => BuildAppInsightsConfiguration(options));
             services.AddLoggerAdapter();
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(CurrentApiVersion, new OpenApiInfo { Title = AssemblyName, Version = CurrentApiVersion });
+            });
+
+            services.AddHealthChecks()
+               .AddFeatureHealthChecks();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(RequireElevatedRightsPolicyName, policy => policy.RequireRole(Roles));
             });
         }
 
