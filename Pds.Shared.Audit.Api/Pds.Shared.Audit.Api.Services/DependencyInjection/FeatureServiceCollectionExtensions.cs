@@ -26,7 +26,7 @@ namespace Pds.Shared.Audit.Api.Services.DependencyInjection
         {
             services.AddDbContext<PdsContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("contracts"));
+                options.UseSqlServer(configuration.GetConnectionString("audit"));
             });
 
             services.AddRepositoriesServices(configuration);

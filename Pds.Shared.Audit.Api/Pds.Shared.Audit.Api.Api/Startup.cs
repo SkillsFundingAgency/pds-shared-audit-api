@@ -100,6 +100,7 @@ namespace Pds.Shared.Audit.Api.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
 
