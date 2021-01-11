@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Context\" />
+    <Folder Include="DataModels\" />
     <Folder Include="Implementations\" />
   </ItemGroup>
 

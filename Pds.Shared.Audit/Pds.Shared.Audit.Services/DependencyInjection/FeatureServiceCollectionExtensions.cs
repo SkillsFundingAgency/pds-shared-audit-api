@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Pds.Shared.Audit.Services.Implementations;
-using Pds.Shared.Audit.Services.Interfaces;
 using Pds.Shared.Audit.Repository.Context;
 using Pds.Shared.Audit.Repository.DependencyInjection;
 
@@ -24,16 +22,7 @@ namespace Pds.Shared.Audit.Services.DependencyInjection
         /// </returns>
         public static IServiceCollection AddFeatureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<PdsContext>(options =>
-            {
-                options.UseSqlServer(configuration.GetConnectionString("audit"));
-            });
-
-            services.AddRepositoriesServices(configuration);
             services.AddAutoMapper(typeof(FeatureServiceCollectionExtensions).Assembly);
-
-            services.AddScoped<IExampleService, ExampleService>();
-
             return services;
         }
     }

@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Pds.Shared.Audit.Repository\Pds.Shared.Audit.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Unit\" />
+  </ItemGroup>
+
 </Project>

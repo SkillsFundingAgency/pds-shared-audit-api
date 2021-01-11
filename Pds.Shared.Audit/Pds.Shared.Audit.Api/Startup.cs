@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Pds.Core.Logging;
 using Pds.Core.Telemetry.ApplicationInsights;
-using Pds.Shared.Audit.Api.MvcConfiguration;
 using Pds.Shared.Audit.Services.DependencyInjection;
 
 namespace Pds.Shared.Audit.Api
@@ -54,7 +53,6 @@ namespace Pds.Shared.Audit.Api
         /// <param name="services">The service collection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApiControllers();
             services.AddFeatureServices(Configuration);
             services.AddPdsApplicationInsightsTelemetry(options => BuildAppInsightsConfiguration(options));
             services.AddLoggerAdapter();

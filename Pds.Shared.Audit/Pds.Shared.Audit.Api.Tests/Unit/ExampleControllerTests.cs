@@ -17,20 +17,15 @@ namespace Pds.Shared.Audit.Api.Tests.Unit
             // Arrange
             var expected = "Hello";
 
-            var mockLogger = new Mock<ILoggerAdapter<ExampleController>>();
+            var mockLogger = new Mock<ILoggerAdapter<AuditController>>();
 
             mockLogger
                 .Setup(logger => logger.LogInformation(It.IsAny<string>()))
                 .Verifiable();
 
-            var mockExampleService = new Mock<IExampleService>();
+         
 
-            mockExampleService
-                .Setup(e => e.Hello())
-                .ReturnsAsync(expected)
-                .Verifiable();
-
-            var controller = new ExampleController(mockLogger.Object, mockExampleService.Object);
+            var controller = new AuditController(mockLogger.Object);
 
             // Act
             var actual = await controller.Get();
@@ -38,7 +33,6 @@ namespace Pds.Shared.Audit.Api.Tests.Unit
             // Assert
             actual.Should().Be(expected);
             mockLogger.Verify();
-            mockExampleService.Verify();
         }
     }
 }
