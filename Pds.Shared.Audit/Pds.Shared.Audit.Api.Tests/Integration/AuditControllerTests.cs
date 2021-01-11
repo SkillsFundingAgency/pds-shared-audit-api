@@ -24,12 +24,10 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
             var controller = new AuditController(logger.Object, auditService);
 
             // Act
-            var actual = await controller.Get();
-
-            //IHttpActionResult actionResult = await controller.Get();
+            var actual = await controller.Get() as ObjectResult;
 
             // Assert
-            actual.Should().Be(expected);
+            actual.Value.Should().Be(expected);
         }
     }
 }

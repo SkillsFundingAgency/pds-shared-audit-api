@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Pds.Core.Logging;
@@ -15,7 +16,7 @@ namespace Pds.Shared.Audit.Api.Tests.Unit
         public async Task Get_ReturnsHelloResultFromAuditService()
         {
             // Arrange
-            var expected = "Hello";
+            var expected = "Hello, world!";
 
             var mockLogger = new Mock<ILoggerAdapter<AuditController>>();
 
@@ -33,10 +34,10 @@ namespace Pds.Shared.Audit.Api.Tests.Unit
             var controller = new AuditController(mockLogger.Object, mockAuditService.Object);
 
             // Act
-            var actual = await controller.Get();
+            var actual = await controller.Get() as ObjectResult;
 
             // Assert
-            actual.Should().Be(expected);
+            actual.Value.Should().Be(expected);
             mockLogger.Verify();
             mockAuditService.Verify();
         }

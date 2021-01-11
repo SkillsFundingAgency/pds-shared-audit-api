@@ -35,6 +35,7 @@ namespace Pds.Shared.Audit.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            _logger.LogInformation("Get request");
             return Ok(await _auditService.Hello());
         }
     }
