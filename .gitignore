@@ -10,6 +10,7 @@
 *.userosscache
 *.sln.docstates
 **/appsettings.local.json
+**/appsettings.development.json
 **/.DS_Store
 
 # User-specific files (MonoDevelop/Xamarin Studio)
