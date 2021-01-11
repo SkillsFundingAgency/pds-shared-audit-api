@@ -3,7 +3,7 @@
 namespace Pds.Shared.Audit.Repository.Interfaces
 {
     /// <summary>
-    ///
+    /// Audit interface.
     /// </summary>
     public interface IAudit
     {

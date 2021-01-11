@@ -3,7 +3,7 @@
 namespace Pds.Shared.Audit.Services.Interfaces
 {
     /// <summary>
-    /// Audit service.
+    /// Audit service interface.
     /// </summary>
     public interface IAuditService
     {

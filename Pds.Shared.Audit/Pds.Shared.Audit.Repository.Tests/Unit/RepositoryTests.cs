@@ -1,16 +1,14 @@
-﻿// <copyright file="RepositoryTests.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Pds.Shared.Audit.Repository.Context;
 
 namespace Pds.Shared.Audit.Repository.Unit.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Pds.Shared.Audit.Repository.Context;
-
     /// <summary>
     /// Repository unit tests.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit")]
     public class RepositoryTests
     {
         /// <summary>
@@ -19,7 +17,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void CommitAsyncTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
 
         /// <summary>
@@ -28,7 +26,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void AddAsyncTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
 
         /// <summary>
@@ -37,7 +35,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void GetAllTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
 
         /// <summary>
@@ -46,7 +44,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void GetByIdAsyncTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
 
         /// <summary>
@@ -55,7 +53,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void GetByPredicateTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
 
         /// <summary>
@@ -64,7 +62,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void GetManyTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
 
         /// <summary>
@@ -73,7 +71,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
         [TestMethod]
         public void UpdateTest()
         {
-            Assert.Fail();
+            false.Should().BeTrue();
         }
     }
 }

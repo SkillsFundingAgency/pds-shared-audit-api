@@ -9,9 +9,9 @@ namespace Pds.Shared.Audit.Services.Tests.Unit
     /// Audit service unit tests.
     /// </summary>
     [TestClass]
+    [TestCategory("Unit")]
     public class AuditServiceTests
     {
-        [TestMethod, TestCategory("Unit")]
         public async Task Hello_ReturnsExpectedResult()
         {
             // Arrange

@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 namespace Pds.Shared.Audit.Api.Tests.Integration
 {
     [TestClass]
+    [TestCategory("Integration")]
     public class AuditControllerTests
     {
-        [TestMethod, TestCategory("Integration")]
+        [TestMethod]
         public async Task Get_ReturnsHelloResultFromAuditService()
         {
             // Arrange

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 namespace Pds.Shared.Audit.Services.Tests.Integration
 {
     [TestClass]
+    [TestCategory("Integration")]
     public class AuditServiceTests
     {
-        [TestMethod, TestCategory("Integration")]
+        [TestMethod]
         public async Task Hello_ReturnsExpectedResult()
         {
             // Arrange
