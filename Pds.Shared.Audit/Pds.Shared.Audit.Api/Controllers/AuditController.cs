@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Pds.Shared.Audit.Api.Controllers
 {
     /// <summary>
-    /// The example controller.
+    /// The audit controller.
     /// </summary>
     public class AuditController : BaseApiController
     {
@@ -18,7 +18,7 @@ namespace Pds.Shared.Audit.Api.Controllers
         /// Initializes a new instance of the <see cref="AuditController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        /// <param name="auditService">The example service.</param>
+        /// <param name="auditService">The audit service.</param>
         public AuditController(
             ILoggerAdapter<AuditController> logger,
             IAuditService auditService)
@@ -33,7 +33,7 @@ namespace Pds.Shared.Audit.Api.Controllers
         /// </summary>
         /// <returns>returns ok.</returns>
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> Get()
         {
             return Ok(await _auditService.Hello());
         }

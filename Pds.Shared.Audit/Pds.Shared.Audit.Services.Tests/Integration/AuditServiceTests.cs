@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Pds.Shared.Audit.Services.Tests.Integration
 {
     [TestClass]
-    public class ExampleServiceTests
+    public class AuditServiceTests
     {
         [TestMethod, TestCategory("Integration")]
         public async Task Hello_ReturnsExpectedResult()
@@ -14,10 +14,10 @@ namespace Pds.Shared.Audit.Services.Tests.Integration
             // Arrange
             var expected = "Hello, world!";
 
-            var exampleService = new AuditService();
+            var auditService = new AuditService();
 
             // Act
-            var actual = await exampleService.Hello();
+            var actual = await auditService.Hello();
 
             // Assert
             actual.Should().Be(expected);

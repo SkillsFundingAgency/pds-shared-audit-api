@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace Pds.Shared.Audit.Api.Tests.Unit
 {
     [TestClass]
-    public class ExampleControllerTests
+    public class AuditControllerTests
     {
         [TestMethod, TestCategory("Unit")]
-        public async Task Get_ReturnsHelloResultFromExampleService()
+        public async Task Get_ReturnsHelloResultFromAuditService()
         {
             // Arrange
             var expected = "Hello";
@@ -23,14 +23,14 @@ namespace Pds.Shared.Audit.Api.Tests.Unit
                 .Setup(logger => logger.LogInformation(It.IsAny<string>()))
                 .Verifiable();
 
-            var mockExampleService = new Mock<IAuditService>();
+            var mockAuditService = new Mock<IAuditService>();
 
-            mockExampleService
+            mockAuditService
                 .Setup(e => e.Hello())
                 .ReturnsAsync(expected)
                 .Verifiable();
 
-            var controller = new AuditController(mockLogger.Object, mockExampleService.Object);
+            var controller = new AuditController(mockLogger.Object, mockAuditService.Object);
 
             // Act
             var actual = await controller.Get();
@@ -38,7 +38,7 @@ namespace Pds.Shared.Audit.Api.Tests.Unit
             // Assert
             actual.Should().Be(expected);
             mockLogger.Verify();
-            mockExampleService.Verify();
+            mockAuditService.Verify();
         }
     }
 }

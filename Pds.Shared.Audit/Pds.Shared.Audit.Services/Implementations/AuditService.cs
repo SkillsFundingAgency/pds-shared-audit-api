@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Pds.Shared.Audit.Services.Implementations
 {
     /// <summary>
-    /// Example service.
+    /// Audit service.
     /// </summary>
     public class AuditService : IAuditService
     {
