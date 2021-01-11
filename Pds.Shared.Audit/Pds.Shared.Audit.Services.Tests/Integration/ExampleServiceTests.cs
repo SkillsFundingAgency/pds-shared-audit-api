@@ -1,29 +1,23 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using Pds.Core.Logging;
-using Pds.Shared.Audit.Api.Controllers;
 using Pds.Shared.Audit.Services.Implementations;
 using System.Threading.Tasks;
 
-namespace Pds.Shared.Audit.Api.Tests.Integration
+namespace Pds.Shared.Audit.Services.Tests.Integration
 {
     [TestClass]
-    public class AuditControllerTests
+    public class ExampleServiceTests
     {
         [TestMethod, TestCategory("Integration")]
-        public async Task Get_ReturnsHelloResultFromExampleService()
+        public async Task Hello_ReturnsExpectedResult()
         {
             // Arrange
             var expected = "Hello, world!";
 
-            var logger = new Mock<ILoggerAdapter<AuditController>>();
             var exampleService = new AuditService();
 
-            var controller = new AuditController(logger.Object, exampleService);
-
             // Act
-            var actual = await controller.Get();
+            var actual = await exampleService.Hello();
 
             // Assert
             actual.Should().Be(expected);

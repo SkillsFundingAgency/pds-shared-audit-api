@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Pds.Core.Logging;
+using Pds.Shared.Audit.Services.Interfaces;
 using System.Threading.Tasks;
 
 namespace Pds.Shared.Audit.Api.Controllers
@@ -10,16 +12,21 @@ namespace Pds.Shared.Audit.Api.Controllers
     public class AuditController : BaseApiController
     {
         private readonly ILoggerAdapter<AuditController> _logger;
+        private readonly IAuditService _auditService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuditController"/> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
+        /// <param name="auditService">The example service.</param>
         public AuditController(
-            ILoggerAdapter<AuditController> logger)
+            ILoggerAdapter<AuditController> logger,
+            IAuditService auditService)
         {
             _logger = logger;
+            _auditService = auditService;
         }
+
 
         /// <summary>
         /// Basic get method.
@@ -28,7 +35,7 @@ namespace Pds.Shared.Audit.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return await Ok("Hello");
+            return Ok(await _auditService.Hello());
         }
     }
 }

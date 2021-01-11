@@ -1,14 +1,16 @@
-﻿using Pds.Shared.Audit.Repository.Interfaces;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.Json.Serialization;
+using DataModel = Pds.Shared.Audit.Repository.DataModels;
+using DataModelInterfaces = Pds.Shared.Audit.Repository.Interfaces;
 
-#nullable disable
-
-namespace Pds.Shared.Audit.Repository.DataModels
+namespace Pds.Shared.Audit.Services.Models
 {
     /// <summary>
-    /// Reverse engineered Audit data model.
+    /// Audit item service model, that will be exposed as schema from API.
     /// </summary>
-    public partial class Audit : IAudit
+    public class Audit : DataModelInterfaces.IAudit
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -16,6 +18,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The identifier.
         /// </value>
+        [JsonIgnore]
         public int Id { get; set; }
 
         /// <summary>
@@ -24,6 +27,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The created at.
         /// </value>
+        [JsonIgnore]
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
@@ -40,6 +44,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The user.
         /// </value>
+        [JsonIgnore]
         public string User { get; set; }
 
         /// <summary>

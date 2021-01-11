@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -20,11 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pds.Shared.Audit.Services\Pds.Shared.Audit.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Integration\" />
-    <Folder Include="Unit\" />
   </ItemGroup>
 
 </Project>

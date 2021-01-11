@@ -1,14 +1,11 @@
-﻿using Pds.Shared.Audit.Repository.Interfaces;
-using System;
+﻿using System;
 
-#nullable disable
-
-namespace Pds.Shared.Audit.Repository.DataModels
+namespace Pds.Shared.Audit.Repository.Interfaces
 {
     /// <summary>
-    /// Reverse engineered Audit data model.
+    ///
     /// </summary>
-    public partial class Audit : IAudit
+    public interface IAudit
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -16,7 +13,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The identifier.
         /// </value>
-        public int Id { get; set; }
+        int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the created at.
@@ -24,7 +21,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The created at.
         /// </value>
-        public DateTime CreatedAt { get; set; }
+        DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or sets the severity.
@@ -32,7 +29,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The severity.
         /// </value>
-        public int Severity { get; set; }
+        int Severity { get; set; }
 
         /// <summary>
         /// Gets or sets the user.
@@ -40,7 +37,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The user.
         /// </value>
-        public string User { get; set; }
+        string User { get; set; }
 
         /// <summary>
         /// Gets or sets the ukprn.
@@ -48,7 +45,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The ukprn.
         /// </value>
-        public int? Ukprn { get; set; }
+        int? Ukprn { get; set; }
 
         /// <summary>
         /// Gets or sets the message.
@@ -56,7 +53,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The message.
         /// </value>
-        public string Message { get; set; }
+        string Message { get; set; }
 
         /// <summary>
         /// Gets or sets the action.
@@ -64,6 +61,6 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The action.
         /// </value>
-        public int Action { get; set; }
+        int Action { get; set; }
     }
 }

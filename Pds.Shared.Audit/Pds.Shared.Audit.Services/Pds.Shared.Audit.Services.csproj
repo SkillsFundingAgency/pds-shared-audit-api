@@ -21,10 +21,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Pds.Shared.Audit.Repository\Pds.Shared.Audit.Repository.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Implementations\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
 
 </Project>
