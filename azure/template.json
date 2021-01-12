@@ -59,7 +59,7 @@
       "type": "string",
       "defaultValue": "*"
     },
-    "contractsDBConnectionString": {
+    "auditDBConnectionString": {
       "type": "securestring"
     }
   },
@@ -185,7 +185,7 @@
               },
               {
                 "name": "ConnectionStrings:audit",
-                "value": ""
+                "value": "[parameters('auditDBConnectionString')]"
               }
             ]
           },
