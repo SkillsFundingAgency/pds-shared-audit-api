@@ -7,6 +7,7 @@ namespace Pds.Shared.Audit.Repository.Unit.Tests
     /// <summary>
     /// Repository unit tests.
     /// </summary>
+    [Ignore]
     [TestClass]
     [TestCategory("Unit")]
     public class RepositoryTests
