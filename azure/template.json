@@ -178,6 +178,14 @@
               {
                 "name": "Logging:LogLevel:Default",
                 "value": "Information"
+              },
+              {
+                "name": "AllowedHosts",
+                "value": "[parameters('allowedHosts')]"
+              },
+              {
+                "name": "ConnectionStrings:audit",
+                "value": ""
               }
             ]
           },
