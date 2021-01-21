@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using DataModels = Pds.Shared.Audit.Repository.DataModels;
 
 #nullable disable
 
@@ -21,7 +22,14 @@ namespace Pds.Shared.Audit.Repository.Context
         }
 
         /// <summary>
-        /// Gets or sets the audits.
+        /// Initializes a new instance of the <see cref="PdsContext"/> class.
+        /// </summary>
+        public PdsContext() : base()
+        {
+        }
+
+        /// <summary>
+        /// Gets or sets the audits DBSet.
         /// </summary>
         /// <value>
         /// The audits.
@@ -47,13 +55,10 @@ namespace Pds.Shared.Audit.Repository.Context
             modelBuilder.Entity<DataModels.Audit>(entity =>
             {
                 entity.ToTable("Audits", "Contracts");
-
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
-
                 entity.Property(e => e.Message)
                     .IsRequired()
                     .HasDefaultValueSql("('')");
-
                 entity.Property(e => e.User)
                     .IsRequired()
                     .HasDefaultValueSql("('')");

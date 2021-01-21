@@ -16,6 +16,7 @@ namespace Pds.Shared.Audit.Services.AutoMapperProfiles
         public AuditMapperProfile()
         {
             CreateMap<DataModel.Audit, ServiceModels.Audit>();
+            CreateMap<ServiceModels.Audit, DataModel.Audit>();
         }
     }
 }

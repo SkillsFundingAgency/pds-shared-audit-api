@@ -1,34 +1,20 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pds.Shared.Audit.Repository.Interfaces
 {
     /// <summary>
-    /// Audit interface.
+    /// Repository audit model interface.
     /// </summary>
     public interface IAudit
     {
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the created at.
-        /// </summary>
-        /// <value>
-        /// The created at.
-        /// </value>
-        DateTime CreatedAt { get; set; }
-
         /// <summary>
         /// Gets or sets the severity.
         /// </summary>
         /// <value>
         /// The severity.
         /// </value>
+        [Required]
         int Severity { get; set; }
 
         /// <summary>
@@ -37,6 +23,7 @@ namespace Pds.Shared.Audit.Repository.Interfaces
         /// <value>
         /// The user.
         /// </value>
+        [Required]
         string User { get; set; }
 
         /// <summary>
@@ -53,6 +40,7 @@ namespace Pds.Shared.Audit.Repository.Interfaces
         /// <value>
         /// The message.
         /// </value>
+        [Required]
         string Message { get; set; }
 
         /// <summary>
@@ -61,6 +49,7 @@ namespace Pds.Shared.Audit.Repository.Interfaces
         /// <value>
         /// The action.
         /// </value>
+        [Required]
         int Action { get; set; }
     }
 }

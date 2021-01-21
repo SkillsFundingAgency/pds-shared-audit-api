@@ -51,5 +51,11 @@ namespace Pds.Shared.Audit.Repository.Interfaces
         /// </summary>
         /// <param name="entity">The entity.</param>
         void Update(T entity);
+
+        /// <summary>
+        /// Deletes the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        void Delete(T entity);
     }
 }

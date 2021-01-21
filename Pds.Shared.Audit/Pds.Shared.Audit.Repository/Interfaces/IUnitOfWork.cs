@@ -8,9 +8,14 @@ namespace Pds.Shared.Audit.Repository.Interfaces
     public interface IUnitOfWork
     {
         /// <summary>
+        /// Gets audit repository.
+        /// </summary>
+        IAuditRepository AuditRepository { get; }
+
+        /// <summary>
         /// Commits this instance asynchronously.
         /// </summary>
-        /// <returns>Async task.</returns>
+        /// <returns>Returns Task.</returns>
         Task CommitAsync();
     }
 }

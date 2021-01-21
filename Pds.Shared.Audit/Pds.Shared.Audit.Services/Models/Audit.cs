@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json.Serialization;
 using DataModel = Pds.Shared.Audit.Repository.DataModels;
@@ -13,29 +14,12 @@ namespace Pds.Shared.Audit.Services.Models
     public class Audit : DataModelInterfaces.IAudit
     {
         /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        [JsonIgnore]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the created at.
-        /// </summary>
-        /// <value>
-        /// The created at.
-        /// </value>
-        [JsonIgnore]
-        public DateTime CreatedAt { get; set; }
-
-        /// <summary>
         /// Gets or sets the severity.
         /// </summary>
         /// <value>
         /// The severity.
         /// </value>
+        [Required]
         public int Severity { get; set; }
 
         /// <summary>
@@ -44,7 +28,7 @@ namespace Pds.Shared.Audit.Services.Models
         /// <value>
         /// The user.
         /// </value>
-        [JsonIgnore]
+        [Required]
         public string User { get; set; }
 
         /// <summary>
@@ -61,6 +45,7 @@ namespace Pds.Shared.Audit.Services.Models
         /// <value>
         /// The message.
         /// </value>
+        [Required]
         public string Message { get; set; }
 
         /// <summary>
@@ -69,6 +54,7 @@ namespace Pds.Shared.Audit.Services.Models
         /// <value>
         /// The action.
         /// </value>
+        [Required]
         public int Action { get; set; }
     }
 }

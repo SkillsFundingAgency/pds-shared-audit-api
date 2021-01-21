@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pds.Shared.Audit.Repository.Context;
 using Pds.Shared.Audit.Repository.Implementations;
 using Pds.Shared.Audit.Repository.Interfaces;
 
@@ -20,8 +22,9 @@ namespace Pds.Shared.Audit.Repository.DependencyInjection
         /// </returns>
         public static IServiceCollection AddRepositoriesServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
+            services.AddScoped<DbContext, PdsContext>();
+            services.AddScoped(typeof(IAuditRepository), typeof(AuditRepository));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             return services;
         }
     }

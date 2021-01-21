@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ServiceModels = Pds.Shared.Audit.Services.Models;
 
 namespace Pds.Shared.Audit.Services.Interfaces
 {
@@ -8,9 +9,10 @@ namespace Pds.Shared.Audit.Services.Interfaces
     public interface IAuditService
     {
         /// <summary>
-        /// Hello.
+        /// Create new audit.
         /// </summary>
-        /// <returns>The hello string.</returns>
-        Task<string> Hello();
+        /// <param name="entity">Audit Model.</param>
+        /// <returns>Task.</returns>
+        Task CreateAsync(ServiceModels.Audit entity);
     }
 }

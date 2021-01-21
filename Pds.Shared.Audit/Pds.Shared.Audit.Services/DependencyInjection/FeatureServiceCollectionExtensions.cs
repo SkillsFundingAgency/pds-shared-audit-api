@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pds.Shared.Audit.Repository.Context;
 using Pds.Shared.Audit.Repository.DependencyInjection;
+using Pds.Shared.Audit.Services.AutoMapperProfiles;
 using Pds.Shared.Audit.Services.Implementations;
 using Pds.Shared.Audit.Services.Interfaces;
 
@@ -30,9 +31,17 @@ namespace Pds.Shared.Audit.Services.DependencyInjection
             });
 
             services.AddRepositoriesServices(configuration);
-            services.AddAutoMapper(typeof(FeatureServiceCollectionExtensions).Assembly);
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AuditMapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddScoped<IAuditService, AuditService>();
+            services.AddScoped<IAuditServiceFireForget, AuditServiceFireForget>();
+            services.AddScoped<IFireForgetEventHandler, FireForgetEventHandler>();
 
             return services;
         }

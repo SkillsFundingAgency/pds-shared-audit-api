@@ -1,5 +1,6 @@
 ﻿using Pds.Shared.Audit.Repository.Interfaces;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -32,6 +33,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The severity.
         /// </value>
+        [Required]
         public int Severity { get; set; }
 
         /// <summary>
@@ -40,6 +42,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The user.
         /// </value>
+        [Required]
         public string User { get; set; }
 
         /// <summary>
@@ -56,6 +59,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The message.
         /// </value>
+        [Required]
         public string Message { get; set; }
 
         /// <summary>
@@ -64,6 +68,7 @@ namespace Pds.Shared.Audit.Repository.DataModels
         /// <value>
         /// The action.
         /// </value>
+        [Required]
         public int Action { get; set; }
     }
 }
