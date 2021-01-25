@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pds.Core.ApiClient.Interfaces;
+using Pds.Core.ApiClient.Services;
 using Pds.Shared.Audit.Repository.Context;
 using Pds.Shared.Audit.Repository.DependencyInjection;
 using Pds.Shared.Audit.Services.AutoMapperProfiles;
@@ -42,6 +44,8 @@ namespace Pds.Shared.Audit.Services.DependencyInjection
             services.AddScoped<IAuditService, AuditService>();
             services.AddScoped<IAuditServiceFireForget, AuditServiceFireForget>();
             services.AddScoped<IFireForgetEventHandler, FireForgetEventHandler>();
+
+            services.AddTransient(typeof(IAuthenticationService<>), typeof(AuthenticationService<>));
 
             return services;
         }

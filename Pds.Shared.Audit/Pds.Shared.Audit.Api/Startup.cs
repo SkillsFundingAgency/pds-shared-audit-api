@@ -1,13 +1,17 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
+using Pds.Core.ApiAuthentication;
 using Pds.Core.Logging;
 using Pds.Core.Telemetry.ApplicationInsights;
 using Pds.Shared.Audit.Api.MvcConfiguration;
 using Pds.Shared.Audit.Services.DependencyInjection;
+using System.IO;
 
 namespace Pds.Shared.Audit.Api
 {
@@ -17,14 +21,22 @@ namespace Pds.Shared.Audit.Api
     public class Startup
     {
         private const string RequireElevatedRightsPolicyName = "RequireElevatedRights";
+
         private const string CurrentApiVersion = "v1.0.0";
+
         private const string Roles = "AuditApiRole";
+
         private static string _assemblyName;
 
         /// <summary>
         /// Gets the application configuration.
         /// </summary>
         public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// Gets the environment.
+        /// </summary>
+        public IWebHostEnvironment Environment { get; }
 
         private string AssemblyName
         {
@@ -43,9 +55,11 @@ namespace Pds.Shared.Audit.Api
         /// Initializes a new instance of the <see cref="Startup"/> class.
         /// </summary>
         /// <param name="configuration">The application configuration.</param>
-        public Startup(IConfiguration configuration)
+        /// <param name="environment">The Web Host Environment.</param>
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         /// <summary>
@@ -55,6 +69,7 @@ namespace Pds.Shared.Audit.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiControllers();
+            services.AddAzureADAuthentication(Configuration);
             services.AddFeatureServices(Configuration);
             services.AddPdsApplicationInsightsTelemetry(options => BuildAppInsightsConfiguration(options));
             services.AddLoggerAdapter();
@@ -62,15 +77,43 @@ namespace Pds.Shared.Audit.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(CurrentApiVersion, new OpenApiInfo { Title = AssemblyName, Version = CurrentApiVersion });
+
+                var securityScheme = new OpenApiSecurityScheme
+                {
+                    Name = "JWT Authentication",
+                    Description = "Enter JWT Bearer token **_only_**",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer", // must be lower case
+                    BearerFormat = "JWT",
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme
+                    }
+                };
+                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                        {
+                            { securityScheme, new string[] { } }
+                        });
+
+                string xmlDocFilePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, $"{AssemblyName}.xml");
+                c.IncludeXmlComments(xmlDocFilePath, true);
             });
+
+            if (Environment.IsDevelopment())
+            {
+                services.DisableAuthentication(AssemblyName);
+            }
 
             services.AddHealthChecks()
                .AddFeatureHealthChecks();
 
             services.AddAuthorization(options =>
-            {
-                options.AddPolicy(RequireElevatedRightsPolicyName, policy => policy.RequireRole(Roles));
-            });
+             {
+                 options.AddPolicy(RequireElevatedRightsPolicyName, policy => policy.RequireRole(Roles));
+             });
         }
 
         /// <summary>
@@ -94,6 +137,8 @@ namespace Pds.Shared.Audit.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
