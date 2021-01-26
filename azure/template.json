@@ -61,6 +61,12 @@
     },
     "auditDBConnectionString": {
       "type": "securestring"
+    },
+    "authenticationTenantId": {
+      "type": "string"
+    },
+    "authenticationClientId": {
+      "type": "string"
     }
   },
   "variables": {
@@ -186,6 +192,18 @@
               {
                 "name": "ConnectionStrings:audit",
                 "value": "[parameters('auditDBConnectionString')]"
+              },
+              {
+                "name": "Authentication:Instance",
+                "value": "https://login.microsoftonline.com/"
+              },
+              {
+                "name": "Authentication:TenantId",
+                "value": "[parameters('authenticationTenantId')]"
+              },
+              {
+                "name": "Authentication:ClientId",
+                "value": "[parameters('authenticationClientId')]"
               }
             ]
           },
