@@ -230,6 +230,12 @@ namespace Pds.Shared.Audit.Services.Enumerations
         /// Audit record action type for removal of inactive provisions.
         /// </summary>
         [Display(Name = "Remove inactive provisions from draft declarations")]
-        RemoveInactiveProvisionsForDraftDeclarations = 36
+        RemoveInactiveProvisionsForDraftDeclarations = 36,
+
+        /// <summary>
+        /// Contract Approved Message successfully sent to FCS API
+        /// </summary>
+        [Display(Name = "Contract Approved Message Sent to FCS API")]
+        ContractApprovedMessageSentToFCS = 37
     }
 }

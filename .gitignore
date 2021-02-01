@@ -341,3 +341,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Pds.Shared.Audit/Pds.Shared.Audit.Api/appsettings.json
