@@ -134,8 +134,6 @@ namespace Pds.Shared.Audit.Api
                 c.SwaggerEndpoint($"/swagger/{CurrentApiVersion}/swagger.json", AssemblyName);
             });
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthentication();
