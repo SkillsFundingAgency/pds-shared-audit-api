@@ -26,7 +26,7 @@ namespace Pds.Shared.Audit.Api
 
         private const string Roles = "AuditApiRole";
 
-        private static string _assemblyName;
+        private string _assemblyName;
 
         /// <summary>
         /// Gets the application configuration.
@@ -111,9 +111,9 @@ namespace Pds.Shared.Audit.Api
                .AddFeatureHealthChecks();
 
             services.AddAuthorization(options =>
-             {
+            {
                  options.AddPolicy(RequireElevatedRightsPolicyName, policy => policy.RequireRole(Roles));
-             });
+            });
         }
 
         /// <summary>
