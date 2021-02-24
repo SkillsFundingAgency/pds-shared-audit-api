@@ -201,7 +201,6 @@ namespace Pds.Shared.Audit.Services.Enumerations
         [Display(Name = "Contract Email Reminder not sent")]
         ContractEmailReminderNotSent = 31,
 
-
         /// <summary>
         /// Audit record action type for all LogicApp actions
         /// </summary>
@@ -233,9 +232,39 @@ namespace Pds.Shared.Audit.Services.Enumerations
         RemoveInactiveProvisionsForDraftDeclarations = 36,
 
         /// <summary>
-        /// Contract Approved Message successfully sent to FCS API
+        /// Audit record action type for successfully sending a contract Approved Message to the FCS API.
         /// </summary>
         [Display(Name = "Contract Approved Message Sent to FCS API")]
-        ContractApprovedMessageSentToFCS = 37
+        ContractApprovedMessageSentToFCS = 37,
+
+        /// <summary>
+        /// Audit record action type for forwarding a contract notification to a subscriber.
+        /// </summary>
+        [Display(Name = "Contract notification forwarded")]
+        ContractNotificationForwarded = 38,
+
+        /// <summary>
+        /// Audit record action type for downloading a Contract PDF from SharePoint.
+        /// </summary>
+        [Display(Name = "Contract PDF downloaded")]
+        ContractPDFDownloaded = 39,
+
+        /// <summary>
+        /// Audit record action type for recieving a contract event from the contract feed reader.
+        /// </summary>
+        [Display(Name = "Contract feed event received")]
+        ContractFeedEventReceived = 40,
+
+        /// <summary>
+        /// Audit record action type for the feed reader filtering out a Contract event.
+        /// </summary>
+        [Display(Name = "Contract feed event filtered out")]
+        ContractFeedEventFilteredOut = 41,
+
+        /// <summary>
+        /// Audit record action type for contract datas from the FCS feed to be saved into blob storage.
+        /// </summary>
+        [Display(Name = "Contract datas feed extract created in blob storage")]
+        ContractDatasBlobCreated = 42
     }
 }
