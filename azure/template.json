@@ -68,6 +68,9 @@
     "authenticationClientId": {
       "type": "string"
     },
+    "azureAdAudience": {
+      "type": "string"
+    },
     "apiSecurityRestrictions": {
       "type": "array",
       "metadata": {
@@ -204,16 +207,20 @@
                 "value": "[parameters('auditDBConnectionString')]"
               },
               {
-                "name": "Authentication:Instance",
+                "name": "AzureAd:Instance",
                 "value": "https://login.microsoftonline.com/"
               },
               {
-                "name": "Authentication:TenantId",
+                "name": "AzureAd:TenantId",
                 "value": "[parameters('authenticationTenantId')]"
               },
               {
-                "name": "Authentication:ClientId",
+                "name": "AzureAd:ClientId",
                 "value": "[parameters('authenticationClientId')]"
+              },
+              {
+                "name": "AzureAd:Audience",
+                "value": "[parameters('azureAdAudience')]"
               }
             ]
           },

@@ -72,7 +72,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
         public void Accept_Endpoints_MultiActionTest_ReturnAccepted(int actionType)
         {
             //Arrange
-            AcceptHelper(GetGenericAuditHelper(actionType), StatusCodes.Status202Accepted);
+            AcceptHelper(GetGenericAuditHelper(actionType), HttpStatusCode.Accepted);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
         public async Task CreateAsync_Endpoints_MultiActionTest_ReturnCreated(int actionType)
         {
             //Arrange
-            await EndpointHelper(GetGenericAuditHelper(actionType), StatusCodes.Status201Created);
+            await EndpointHelper(GetGenericAuditHelper(actionType), HttpStatusCode.Created);
         }
 
         [TestMethod]
@@ -136,7 +136,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
             var result = await CreatePostAsync("/api/auditasync", GetStringContent(obj));
 
             // Assert
-            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be((int)HttpStatusCode.Accepted);
+            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be(HttpStatusCode.Accepted);
         }
 
         [TestMethod]
@@ -149,7 +149,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
             var result = await CreatePostAsync("/api/Audit", GetStringContent(audit));
 
             // Assert
-            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be((int)HttpStatusCode.Created);
+            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be(HttpStatusCode.Created);
         }
 
         [TestMethod]
@@ -169,7 +169,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
             var result = await CreatePostAsync("/api/auditasync", GetStringContent(obj));
 
             // Assert
-            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
         [TestMethod]
@@ -189,7 +189,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
             var result = await CreatePostAsync("/api/Audit", GetStringContent(obj));
 
             // Assert
-            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+            result.Should().BeOfType<HttpResponseMessage>().Which.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
         #endregion
 
@@ -200,7 +200,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
         /// Accept helper.
         /// </summary>
         /// <param name="expectedStatusCode">Status code to mock test.</param>
-        private void AcceptHelper(ServiceModels.Audit audit, int expectedStatusCode)
+        private void AcceptHelper(ServiceModels.Audit audit, HttpStatusCode expectedStatusCode)
         {
             // Arrange
             // Act
@@ -214,7 +214,7 @@ namespace Pds.Shared.Audit.Api.Tests.Integration
         /// Create async helper.
         /// </summary>
         /// <param name="expectedStatusCode">Status code to mock test.</param>
-        private async Task EndpointHelper(ServiceModels.Audit audit, int expectedStatusCode)
+        private async Task EndpointHelper(ServiceModels.Audit audit, HttpStatusCode expectedStatusCode)
         {
             // Arrange
             // Act

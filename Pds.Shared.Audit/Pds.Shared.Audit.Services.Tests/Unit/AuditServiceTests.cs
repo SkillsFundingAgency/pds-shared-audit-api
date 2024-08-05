@@ -64,7 +64,7 @@ namespace Pds.Shared.Audit.Services.Tests.Unit
             Func<Task> func = () => sut.CreateAsync(smAudit);
 
             // Assert
-            func.Should().Throw<ArgumentNullException>();
+            func.Should().ThrowAsync<ArgumentNullException>();
         }
 
         /// <summary>
